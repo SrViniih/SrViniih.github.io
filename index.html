@@ -216,8 +216,11 @@
             <ul>
                 <li><a href="#hero">Inicio</a></li>
                 <li><a href="#desayunos">Desayunos</a></li>
-                <li><a href="#tablas">Tablas</a></li>
-                <li><a href="#hamburguesas">Hamburguesas</a></li>
+                <li><a href="#tablas">Tablas completas</a></li>
+                <li><a href="#hamburguesas">Platos combinado</a></li>
+                <li><a href="#desayunos">Hamburguesa/a></li>
+                <li><a href="#tablas">Raciones</a></li>
+                <li><a href="#hamburguesas">bocatas</a></li>
                 <li><a href="#reserva" class="btn-reserva-header">Reserva tu Mesa</a></li>
             </ul>
         </nav>
@@ -307,6 +310,11 @@
             { nome: "Tabla Ibérica", desc: "Jamón, queso, chorizo", preco: "28.00", img: "tabla1.webp" },
             // ... adicione as outras 2 tablas aqui
         ],
+        hamburguesa: [
+            { nome: "Tabla Ibérica", desc: "Jamón, queso, chorizo", preco: "28.00", img: "tabla1.webp" },
+            // ... adicione as outras 2 tablas aqui
+        ],
+        // ... Crie as listas para as outras 8 categorias
         // ... Crie as listas para as outras 8 categorias
     };
 
@@ -335,6 +343,8 @@
     // Chame a função para cada categoria
     renderizarProdutos('desayunos', 'grid-desayunos');
     renderizarProdutos('tablas', 'grid-tablas');
+    renderizarProdutos('platos', 'grid-desayunos');
+    renderizarProdutos('hamburguesa', 'grid-tablas');
     // ... Chame para as outras 8 categorias
 
     // --- 3. SISTEMA DE RESERVA VIA WHATSAPP ---
