@@ -203,42 +203,49 @@ nav a:hover {
         .flatpickr-day.selected { background: var(--amarelo) !important; color: #000 !important; border: none; }
 
         /* --- MOBILE --- */
-        @media (max-width: 768px) {
+        /* --- AJUSTE PARA CELULAR (CORRIGIDO) --- */
+@media (max-width: 768px) {
     header { 
         height: auto; 
-        padding: 15px 2%; 
+        padding: 10px 2%; 
         flex-wrap: wrap; 
         justify-content: space-between; 
     }
 
-    /* Logo ajustada para ser nítida no celular */
     .taramundi-img { 
-        height: 55px; /* Aumentamos de 40px para 55px conforme sugerido */
+        height: 45px; /* Ajuste leve para a logo não ocupar espaço demais */
     }
 
     .nav-container { 
         order: 3; 
         width: 100%; 
-        margin: 15px 0 0 0; 
-        border-top: 1px solid #27272a; 
-        padding-top: 10px; 
+        margin-top: 8px; 
+        /* Deixando a barra de separação mais discreta (cinza bem escuro) */
+        border-top: 1px solid #1a1a1c; 
+        padding-top: 8px; 
+        overflow-x: auto; /* Permite o deslize horizontal */
+        display: block;
+        -webkit-overflow-scrolling: touch; /* Scroll suave para iPhone */
     }
 
-    /* AQUI: Deixando as categorias mais nítidas no celular */
+    nav ul { 
+        gap: 20px; 
+        display: flex; 
+        flex-wrap: nowrap; /* IMPEDE que as categorias quebrem linha */
+        padding: 0 15px 5px 15px; /* Espaço nas laterais para o texto não colar na borda */
+    }
+
     nav a { 
-        font-size: 0.85rem; /* Tamanho equilibrado para telas pequenas */
+        font-size: 0.85rem; 
+        white-space: nowrap; /* FORÇA o texto a ficar em uma linha só (ex: Tablas Completas) */
         font-weight: 600;
-        letter-spacing: 0.5px;
     }
-
-    nav ul { gap: 15px; }
 
     .hero h2 { font-size: 2.5rem; }
-
     .btn-reserva-header { padding: 8px 12px; font-size: 0.7rem; }
-
-    /* Ajuste do padding para não cobrir o conteúdo com o header maior */
-    body { padding-top: 140px; } 
+    
+    /* Ajuste do topo para o conteúdo não começar debaixo do header */
+    body { padding-top: 135px; } 
 }
     </style>
 </head>
