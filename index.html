@@ -210,40 +210,29 @@
     const navList = document.getElementById('nav-list');
 
     // A mágica acontece aqui:
-    categorias.forEach(cat => {
-    navList.innerHTML += `<li><a href="#${cat.id}">${cat.nome}</a></li>`;
+    // Dentro do seu loop categorias.forEach...
+cat.itens.forEach((itemString, index) => {
+    // Separa o Nome da Descrição
+    const [nome, descricao] = itemString.split(' | '); 
+    
+    let numeroFoto = index + 1; 
+    let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
+    let caminhoFoto = `img/${cat.id}/${nomeFoto}`; 
 
-    let section = document.createElement('section');
-    section.id = cat.id;
-    
-    let html = `<h2 class="categoria-title">${cat.nome}</h2><div class="product-grid">`;
-    
-    cat.itens.forEach((nomeDoPrato, index) => {
-        let numeroFoto = index + 1; 
-        let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
-        
-        // AQUI ESTÁ A MUDANÇA: adicionamos ${cat.id}/ no caminho
-        let caminhoFoto = `img/${cat.id}/${nomeFoto}`; 
-
-        html += `
-            <div class="product-card">
-                <div style="width:100%; height:220px; background:#1e1e21; border-radius:10px; overflow:hidden; margin-bottom:15px; border: 1px solid #27272a;">
-                    <img src="${caminhoFoto}" 
-                         alt="${nomeDoPrato}" 
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;padding:90px 0; text-align:center; color:#3f3f46; font-size:0.8rem;&quot;>Foto en camino...</div>'"
-                         style="width:100%; height:100%; object-fit:cover; transition: 0.5s;">
-                </div>
-                <div class="product-info">
-                    <h3>${nomeDoPrato}</h3>
-                    <p>Descripción especial con los mejores ingredientes de la región.</p>
-                    <span class="product-price">12,90€</span>
-                </div>
-            </div>`;
-    });
-    
-    html += `</div>`;
-    section.innerHTML = html;
-    menuContainer.appendChild(section);
+    html += `
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="${caminhoFoto}" 
+                     alt="${nome}" 
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'no-photo\'>Foto en camino...</div>'"
+                     style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="product-info">
+                <h3>${nome}</h3>
+                <p>${descricao || 'Deliciosa opción preparada con ingredientes frescos.'}</p>
+                <span class="product-price">12,90€</span>
+            </div>
+        </div>`;
 });
 
     // Lógica do WhatsApp (Mantenha igual)
