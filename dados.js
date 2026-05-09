@@ -2,7 +2,7 @@ const categorias = [
     { 
         id: 'desayunos', 
         nome: 'Desayunos', 
-        itens: ['Café Solo', 'Café con Leche', 'Tostada con Tomate', 'Croissant Artesano', 'Huevos Revueltos', 'Zumo de Naranja', 'Tortilla Española', 'Yogur con Frutas', 'Chocolate con Churros', 'Pancakes Taramundi', 'Muffins Caseros', 'Tostada con Jamón', 'Bocadillito Caliente', 'Fruta de Temporada', 'Té Matcha', 'Desayuno Especial'] 
+        itens: ['Tostada con aceite', 'Tostada con marmelada', 'tostada con marmelada + jamón serrano', 'Tostada con tomate', 'Tortilla de patata', 'Tortilla francesa', 'Sandwich bacon', 'Sandwich vegetal', 'Americano', 'Bizcocho casero', 'Croissant', 'Croissant jamón y queso'] 
     },
     { 
         id: 'tablas', 
