@@ -263,8 +263,12 @@
         // 3. Loop pelos itens da categoria
         // Dentro de tu index.html, el loop debe quedar así:
 cat.itens.forEach((itemString, index) => {
-    // SEPARA LOS 3 DATOS
-    const [nome, descricao, preco] = itemString.split(' | '); 
+    // SEPARAÇÃO INTELIGENTE: 
+    // O .split('|') corta na barra, e o .map(s => s.trim()) remove espaços extras
+    const partes = itemString.split('|').map(p => p.trim());
+    const nome = partes[0];
+    const descricao = partes[1];
+    const preco = partes[2]; 
     
     let numeroFoto = index + 1; 
     let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
@@ -281,7 +285,7 @@ cat.itens.forEach((itemString, index) => {
             <div class="product-info">
                 <h3>${nome}</h3>
                 <p>${descricao || 'Preparado con ingredientes de alta calidad.'}</p>
-                <span class="product-price">${preco | 'Consultar'}</span>
+                <span class="product-price">${preco || 'Consultar'}</span>
             </div>
         </div>`;
 });
