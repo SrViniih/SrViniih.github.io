@@ -204,14 +204,42 @@ nav a:hover {
 
         /* --- MOBILE --- */
         @media (max-width: 768px) {
-            header { height: auto; padding: 15px 2%; flex-wrap: wrap; justify-content: space-between; }
-            .taramundi-img { height: 40px; }
-            .nav-container { order: 3; width: 100%; margin: 15px 0 0 0; border-top: 1px solid #27272a; padding-top: 10px; }
-            nav ul { gap: 15px; }
-            .hero h2 { font-size: 2.5rem; }
-            .btn-reserva-header { padding: 8px 12px; font-size: 0.7rem; }
-            body { padding-top: 130px; }
-        }
+    header { 
+        height: auto; 
+        padding: 15px 2%; 
+        flex-wrap: wrap; 
+        justify-content: space-between; 
+    }
+
+    /* Logo ajustada para ser nítida no celular */
+    .taramundi-img { 
+        height: 55px; /* Aumentamos de 40px para 55px conforme sugerido */
+    }
+
+    .nav-container { 
+        order: 3; 
+        width: 100%; 
+        margin: 15px 0 0 0; 
+        border-top: 1px solid #27272a; 
+        padding-top: 10px; 
+    }
+
+    /* AQUI: Deixando as categorias mais nítidas no celular */
+    nav a { 
+        font-size: 0.85rem; /* Tamanho equilibrado para telas pequenas */
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    nav ul { gap: 15px; }
+
+    .hero h2 { font-size: 2.5rem; }
+
+    .btn-reserva-header { padding: 8px 12px; font-size: 0.7rem; }
+
+    /* Ajuste do padding para não cobrir o conteúdo com o header maior */
+    body { padding-top: 140px; } 
+}
     </style>
 </head>
 <body>
