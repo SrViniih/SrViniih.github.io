@@ -201,66 +201,56 @@
 
 <footer><p>&copy; 2026 Taramundi Bar & Restaurante.</p></footer>
 
-<script>
-    const categorias = [
-        { id: 'desayunos', nome: 'Desayunos', qtd: 16 },
-        { id: 'tablas', nome: 'Tablas Completas', qtd: 3 },
-        { id: 'platos', nome: 'Platos Combinados', qtd: 4 },
-        { id: 'sartenes', nome: 'Sartenes Taramundi', qtd: 7 },
-        { id: 'hamburguesas', nome: 'Hamburguesas', qtd: 9 },
-        { id: 'raciones', nome: 'Raciones', qtd: 8 },
-        { id: 'bocatas', nome: 'Bocatas', qtd: 7 },
-        { id: 'sandwich', nome: 'Sandwich y Perritos', qtd: 5 },
-        { id: 'ensaladas', nome: 'Ensaladas de la Casa', qtd: 3 },
-        { id: 'postres', nome: 'Postres', qtd: 2 }
-    ];
+<!-- Primeiro carregamos os DADOS -->
+<script src="dados.js"></script>
 
+<!-- Depois carregamos a LÓGICA que usa esses dados -->
+<script>
     const menuContainer = document.getElementById('menu-container');
     const navList = document.getElementById('nav-list');
 
+    // A mágica acontece aqui:
     categorias.forEach(cat => {
-        // Adiciona o item na barra de navegação superior
+        // Cria o link no menu superior
         navList.innerHTML += `<li><a href="#${cat.id}">${cat.nome}</a></li>`;
 
-        // Cria a seção de cada categoria
+        // Cria a seção da categoria
         let section = document.createElement('section');
         section.id = cat.id;
         
         let html = `<h2 class="categoria-title">${cat.nome}</h2><div class="product-grid">`;
         
-        for (let i = 1; i <= cat.qtd; i++) {
-            // Mudança para puxar os arquivos .webp corretamente
-            let nomeFoto = `${cat.id}-${i}.webp`; 
+        // Loop pelos itens que você listou no dados.js
+        cat.itens.forEach((nomeDoPrato, index) => {
+            let numeroFoto = index + 1; 
+            let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
             let caminhoFoto = `img/${nomeFoto}`; 
 
-            // Foi trocada a aspa simples dentro do HTML do onerror para &quot; para evitar conflito na string
             html += `
                 <div class="product-card">
                     <div style="width:100%; height:220px; background:#1e1e21; border-radius:10px; overflow:hidden; margin-bottom:15px; border: 1px solid #27272a;">
                         <img src="${caminhoFoto}" 
-                             alt="${cat.nome}" 
+                             alt="${nomeDoPrato}" 
                              onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;padding:90px 0; text-align:center; color:#3f3f46; font-size:0.8rem;&quot;>Foto en camino...</div>'"
                              style="width:100%; height:100%; object-fit:cover; transition: 0.5s;">
                     </div>
                     <div class="product-info">
-                        <h3>${cat.nome} #${i}</h3>
-                        <p>Ingredientes seleccionados de la mejor calidad para un sabor único.</p>
+                        <h3>${nomeDoPrato}</h3>
+                        <p>Descripción especial con los mejores ingredientes de la región.</p>
                         <span class="product-price">12,90€</span>
                     </div>
                 </div>`;
-        }
+        });
         
         html += `</div>`;
         section.innerHTML = html;
         menuContainer.appendChild(section);
     });
 
-    // Lógica do botão de WhatsApp
+    // Lógica do WhatsApp (Mantenha igual)
     document.getElementById('form-reserva').addEventListener('submit', function(e) {
         e.preventDefault();
         const msg = `Hola, ¿la reserva para el día ${document.getElementById('data').value} a las ${document.getElementById('hora').value} está disponible?`;
-        
-        // ATENÇÃO: Troque o 34600000000 abaixo pelo número real do Taramundi
         window.open(`https://wa.me/34600000000?text=${encodeURIComponent(msg)}`, '_blank');
     });
 </script>
