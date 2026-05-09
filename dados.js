@@ -1,5 +1,4 @@
 const categorias = [
-    const categorias = [
     { 
         id: 'desayunos', 
         nome: 'Desayunos', 
