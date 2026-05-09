@@ -322,19 +322,25 @@ nav a:hover {
 </header>
 
 <!-- SEÇÃO DE DESTAQUES (CARROSSEL) -->
+<!-- CARROSSEL 1: RECOMENDADOS -->
 <section class="carousel-section">
     <h2 class="categoria-title" style="margin-top: 0;">Recomendados</h2>
-    <div class="carousel-container">
-        <div class="carousel-track" id="carousel-track">
-            <!-- Os slides serão gerados pelo JavaScript -->
-        </div>
-        
-        <!-- Botões de Navegação -->
-        <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
-        <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
-        
-        <!-- Indicadores (Pontinhos) -->
-        <div class="carousel-dots" id="carousel-dots"></div>
+    <div class="carousel-container" id="carousel-rec">
+        <div class="carousel-track" id="track-rec"></div>
+        <button class="carousel-btn prev" onclick="moveSlide('rec', -1)">&#10094;</button>
+        <button class="carousel-btn next" onclick="moveSlide('rec', 1)">&#10095;</button>
+        <div class="carousel-dots" id="dots-rec"></div>
+    </div>
+</section>
+
+<!-- CARROSSEL 2: PRATOS NOVOS -->
+<section class="carousel-section">
+    <h2 class="categoria-title" style="margin-top: 0;">Pratos Novos</h2>
+    <div class="carousel-container" id="carousel-novos">
+        <div class="carousel-track" id="track-novos"></div>
+        <button class="carousel-btn prev" onclick="moveSlide('novos', -1)">&#10094;</button>
+        <button class="carousel-btn next" onclick="moveSlide('novos', 1)">&#10095;</button>
+        <div class="carousel-dots" id="dots-novos"></div>
     </div>
 </section>
 
@@ -360,113 +366,64 @@ nav a:hover {
 <script src="dados.js"></script>
 
 <script>
-    const menuContainer = document.getElementById('menu-container');
-    const navList = document.getElementById('nav-list');
+    // Objeto para controlar a posição de cada carrossel separadamente
+const carouselStates = {
+    rec: { current: 0, data: recomendados, folder: 'destaques' },
+    novos: { current: 0, data: pratosNovos, folder: 'novos' }
+};
 
-    // Motor de Geração do Cardápio
-    categorias.forEach(cat => {
-        // Menu superior
-        navList.innerHTML += `<li><a href="#${cat.id}">${cat.nome}</a></li>`;
+function initCarousels() {
+    for (const [id, state] of Object.entries(carouselStates)) {
+        const track = document.getElementById(`track-${id}`);
+        const dotsCont = document.getElementById(`dots-${id}`);
         
-        // Seção da categoria
-        let section = document.createElement('section');
-        section.id = cat.id;
-        
-        let html = `<h2 class="categoria-title">${cat.nome}</h2><div class="product-grid">`;
+        state.data.forEach((item, i) => {
+            const [nome, desc, preco] = item.split('|').map(s => s.trim());
+            // Busca a imagem na pasta correspondente: img/destaques/ ou img/novos/
+            const fotoUrl = `img/${state.folder}/${state.folder}-${i+1}.webp`;
 
-        cat.itens.forEach((itemString, index) => {
-            const partes = itemString.split('|').map(p => p.trim());
-            const nome = partes[0];
-            const descricao = partes[1];
-            const preco = partes[2]; 
-            
-            let numeroFoto = index + 1; 
-            let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
-            let caminhoFoto = `img/${cat.id}/${nomeFoto}`; 
-
-            html += `
-                <div class="product-card">
-                    <div class="product-img-container">
-                        <img src="${caminhoFoto}" 
-                             alt="${nome}" 
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'no-photo\'>Foto en camino...</div>'"
-                             style="width:100%; height:100%; object-fit:cover;">
+            track.innerHTML += `
+                <div class="carousel-slide">
+                    <div class="slide-img-box">
+                        <img src="${fotoUrl}" onerror="this.src='https://via.placeholder.com/600x400?text=Taramundi'">
                     </div>
-                    <div class="product-info">
-                        <h3>${nome}</h3>
-                        <p>${descricao || 'Preparado con ingredientes de alta calidad.'}</p>
-                        <span class="product-price">${preco || 'Consultar'}</span>
+                    <div class="slide-info-box">
+                        <span class="badge-promo">${id === 'rec' ? '⭐ Favorito' : '🔥 ¡NUEVO!'}</span>
+                        <h2>${nome}</h2>
+                        <p>${desc}</p>
+                        <div class="price-promo">${preco}</div>
                     </div>
                 </div>`;
+            dotsCont.innerHTML += `<div class="dot ${i===0?'active':''}" onclick="jumpTo('${id}', ${i})"></div>`;
         });
-
-        html += `</div>`;
-        section.innerHTML = html;
-        menuContainer.appendChild(section);
-    });
-
-    // Envio WhatsApp
-    document.getElementById('form-reserva').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const msg = `Hola, ¿la reserva para el día ${document.getElementById('data').value} a las ${document.getElementById('hora').value} está disponible?`;
-        window.open(`https://wa.me/34643496470?text=${encodeURIComponent(msg)}`, '_blank');
-    });
-
-    // Ativação Flatpickr
-    flatpickr("#data", { dateFormat: "d/m/Y", minDate: "today" });
-    flatpickr("#hora", { enableTime: true, noCalendar: true, dateFormat: "H:i", time_24hr: true });
-    // 1. Defina quais produtos quer destacar aqui (ID da categoria, índice do item no dados.js)
-const destaques = [
-    { cat: 'tablas', index: 1, label: 'Recomendado' },
-    { cat: 'hamburguesas', index: 8, label: 'Novo!' },
-    { cat: 'postres', index: 0, label: 'Destaque' }
-];
-
-const track = document.getElementById('carousel-track');
-const dotsContainer = document.getElementById('carousel-dots');
-let currentIndex = 0;
-
-// 2. Gera os slides automaticamente pegando os dados do seu dados.js
-destaques.forEach((d, i) => {
-    const categoria = categorias.find(c => c.id === d.cat);
-    const itemData = categoria.itens[d.index].split('|').map(p => p.trim());
-    
-    // HTML do Slide
-    track.innerHTML += `
-        <div class="carousel-slide">
-            <img src="img/${d.cat}/${d.cat}-${d.index + 1}.webp" class="slide-img" onerror="this.src='https://via.placeholder.com/400x300?text=Taramundi'">
-            <div class="slide-info">
-                <span class="badge-novo">${d.label}</span>
-                <h3>${itemData[0]}</h3>
-                <p>${itemData[1]}</p>
-                <span class="product-price" style="font-size: 1.8rem;">${itemData[2]}</span>
-            </div>
-        </div>
-    `;
-    // Gera os pontinhos
-    dotsContainer.innerHTML += `<span class="dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></span>`;
-});
-
-// 3. Funções de movimento
-function updateCarousel() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    document.querySelectorAll('.dot').forEach((d, i) => {
-        d.classList.toggle('active', i === currentIndex);
-    });
+    }
 }
 
-function moveCarousel(direction) {
-    currentIndex = (currentIndex + direction + destaques.length) % destaques.length;
-    updateCarousel();
+function moveSlide(id, dir) {
+    const state = carouselStates[id];
+    const total = state.data.length;
+    state.current = (state.current + dir + total) % total;
+    updateCarouselUI(id);
 }
 
-function goToSlide(index) {
-    currentIndex = index;
-    updateCarousel();
+function jumpTo(id, i) {
+    carouselStates[id].current = i;
+    updateCarouselUI(id);
 }
 
-// Auto-play (Passa sozinho a cada 5 segundos)
-setInterval(() => moveCarousel(1), 5000);
+function updateCarouselUI(id) {
+    const track = document.getElementById(`track-${id}`);
+    track.style.transform = `translateX(-${carouselStates[id].current * 100}%)`;
+    const dots = document.querySelectorAll(`#dots-${id} .dot`);
+    dots.forEach((d, i) => d.classList.toggle('active', i === carouselStates[id].current));
+}
+
+// Inicializa tudo ao carregar
+initCarousels();
+
+// Auto-play independente
+setInterval(() => moveSlide('rec', 1), 7000);
+setInterval(() => moveSlide('novos', 1), 5000);
 </script>
 </body>
 </html>

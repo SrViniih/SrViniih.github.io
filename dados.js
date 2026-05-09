@@ -1,3 +1,15 @@
+// Destaques que aparecem no primeiro carrossel
+const recomendados = [
+    "Cachopo Individual | El clásico asturiano, empanado a la perfección. | 16,00€",
+    "Tabla Taramundi | Mix de quesos y embutidos de la región. | 18,50€"
+];
+
+// Destaques que aparecem no segundo carrossel (Pratos Novos)
+const pratosNovos = [
+    "Burger Taramundi | Con huevo frito, pimientos y nuestra salsa secreta. | 12,00€",
+    "Tarta de Queso y Chocolate | Una explosión de sabor artesanal. | 6,50€",
+    "Combo Krispy | Pollo crujiente con cereales y mayonesa suave. | 10,50€"
+];
 const categorias = [
     { 
         id: 'desayunos', 
@@ -120,4 +132,5 @@ const categorias = [
             'Tarta de queso y tres chocolate | Con leche condensada y caramelo artesanal. | 4,00€'
         ] 
     }
+    
 ];
