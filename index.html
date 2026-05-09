@@ -247,6 +247,62 @@ nav a:hover {
     /* Ajuste do topo para o conteúdo não começar debaixo do header */
     body { padding-top: 135px; } 
 }
+/* --- ESTILOS DO CARROSSEL --- */
+.carousel-section { padding: 40px 5%; max-width: 1300px; margin: auto; overflow: hidden; }
+
+.carousel-container { position: relative; width: 100%; margin-top: 20px; }
+
+.carousel-track { 
+    display: flex; 
+    transition: transform 0.5s ease-in-out; 
+    gap: 20px;
+}
+
+.carousel-slide {
+    min-width: 100%; /* Mostra 1 por vez no mobile */
+    background: var(--card-bg);
+    border-radius: 15px;
+    border: 1px solid #27272a;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 30px;
+}
+
+/* No PC, o slide fica mais bonito com a imagem ao lado do texto */
+.slide-img { 
+    width: 40%; 
+    height: 300px; 
+    border-radius: 10px; 
+    object-fit: cover; 
+}
+
+.slide-info { width: 60%; }
+.slide-info h3 { font-family: 'Playfair Display'; font-size: 2rem; color: var(--amarelo); margin-bottom: 10px; }
+.slide-info p { color: var(--texto-secundario); margin-bottom: 20px; }
+.badge-novo { background: var(--verde); color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 0.7rem; text-transform: uppercase; }
+
+/* Botões */
+.carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.5); color: white; border: none; padding: 15px;
+    cursor: pointer; border-radius: 50%; z-index: 10; transition: 0.3s;
+}
+.carousel-btn:hover { background: var(--verde); }
+.prev { left: -20px; }
+.next { right: -20px; }
+
+.carousel-dots { text-align: center; margin-top: 20px; }
+.dot { height: 10px; width: 10px; margin: 0 5px; background-color: #333; border-radius: 50%; display: inline-block; cursor: pointer; }
+.dot.active { background-color: var(--verde); width: 25px; border-radius: 10px; }
+
+/* Ajuste Mobile */
+@media (max-width: 768px) {
+    .carousel-slide { flex-direction: column; text-align: center; padding: 15px; }
+    .slide-img { width: 100%; height: 200px; }
+    .slide-info { width: 100%; }
+    .carousel-btn { display: none; } /* Esconde setas no mobile para usar o dedo */
+}
     </style>
 </head>
 <body>
@@ -265,10 +321,21 @@ nav a:hover {
     <a href="#reserva" class="btn-reserva-header">Reserva tu Mesa</a>
 </header>
 
-<section class="hero">
-    <h2>Taramundi</h2>
-    <p>Tradición y Sabor Auténtico. Explore nuestra cocina.</p>
-    <a href="#reserva" class="btn-hero" style="text-decoration: none; color: #000; padding: 15px 40px; background: var(--amarelo); border-radius: 30px; font-weight: bold;">Reserva tu Mesa</a>
+<!-- SEÇÃO DE DESTAQUES (CARROSSEL) -->
+<section class="carousel-section">
+    <h2 class="categoria-title" style="margin-top: 0;">Recomendados</h2>
+    <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+            <!-- Os slides serão gerados pelo JavaScript -->
+        </div>
+        
+        <!-- Botões de Navegação -->
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+        <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+        
+        <!-- Indicadores (Pontinhos) -->
+        <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
 </section>
 
 <main class="menu-section" id="menu-container"></main>
@@ -348,6 +415,58 @@ nav a:hover {
     // Ativação Flatpickr
     flatpickr("#data", { dateFormat: "d/m/Y", minDate: "today" });
     flatpickr("#hora", { enableTime: true, noCalendar: true, dateFormat: "H:i", time_24hr: true });
+    // 1. Defina quais produtos quer destacar aqui (ID da categoria, índice do item no dados.js)
+const destaques = [
+    { cat: 'tablas', index: 1, label: 'Recomendado' },
+    { cat: 'hamburguesas', index: 8, label: 'Novo!' },
+    { cat: 'postres', index: 0, label: 'Destaque' }
+];
+
+const track = document.getElementById('carousel-track');
+const dotsContainer = document.getElementById('carousel-dots');
+let currentIndex = 0;
+
+// 2. Gera os slides automaticamente pegando os dados do seu dados.js
+destaques.forEach((d, i) => {
+    const categoria = categorias.find(c => c.id === d.cat);
+    const itemData = categoria.itens[d.index].split('|').map(p => p.trim());
+    
+    // HTML do Slide
+    track.innerHTML += `
+        <div class="carousel-slide">
+            <img src="img/${d.cat}/${d.cat}-${d.index + 1}.webp" class="slide-img" onerror="this.src='https://via.placeholder.com/400x300?text=Taramundi'">
+            <div class="slide-info">
+                <span class="badge-novo">${d.label}</span>
+                <h3>${itemData[0]}</h3>
+                <p>${itemData[1]}</p>
+                <span class="product-price" style="font-size: 1.8rem;">${itemData[2]}</span>
+            </div>
+        </div>
+    `;
+    // Gera os pontinhos
+    dotsContainer.innerHTML += `<span class="dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></span>`;
+});
+
+// 3. Funções de movimento
+function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === currentIndex);
+    });
+}
+
+function moveCarousel(direction) {
+    currentIndex = (currentIndex + direction + destaques.length) % destaques.length;
+    updateCarousel();
+}
+
+function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+}
+
+// Auto-play (Passa sozinho a cada 5 segundos)
+setInterval(() => moveCarousel(1), 5000);
 </script>
 </body>
 </html>
