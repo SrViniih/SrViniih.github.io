@@ -30,6 +30,26 @@
             color: var(--texto);
             line-height: 1.6;
         }
+        /* Ajuste da logo para ficar legível e na mesma posição */
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 45px; /* Define um tamanho padrão elegante */
+    width: auto;  /* Mantém a proporção da imagem sem achatar */
+    display: block;
+    transition: 0.3s;
+}
+
+/* No celular, podemos diminuir um pouco para caber tudo */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 35px; 
+    }
+}
 
         /* --- HEADER & NAV --- */
         header {
@@ -212,13 +232,19 @@
 <body>
 
 <header>
-    <a href="#" class="brand">Taramundi</a>
+    <header>
+    <a href="#" class="brand">
+        <!-- Substituído para .webp conforme seu padrão -->
+        <img src="img/taramundi.webp" alt="Taramundi Logo" class="taramundi-img">
+    </a>
+    
     <div class="nav-container">
         <nav>
             <ul id="nav-list"></ul>
         </nav>
     </div>
     <a href="#reserva" class="btn-reserva-header">Reserva tu Mesa</a>
+</header>
 </header>
 
 <section class="hero">
