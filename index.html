@@ -88,14 +88,20 @@ body {
 
         nav ul { display: inline-flex; gap: 20px; list-style: none; padding: 0 10px; }
         nav a { 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            font-weight: 700; 
-            color: var(--verde); 
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        nav a:hover { color: var(--amarelo); }
+    font-size: 0.9rem;          /* Aumentamos de 0.7 para 0.9 para maior nitidez */
+    text-transform: uppercase; 
+    font-weight: 600;           /* Um peso 600 fica mais limpo que o 700 para leitura */
+    color: var(--verde); 
+    text-decoration: none;
+    letter-spacing: 1px;        /* Espaçamento entre letras ajuda na leitura rápida */
+    transition: 0.3s;
+}
+
+/* Efeito para quando o mouse passa por cima */
+nav a:hover { 
+    color: var(--amarelo); 
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.4); /* Leve brilho ao focar */
+}
 
         .btn-reserva-header {
             background-color: var(--amarelo);
