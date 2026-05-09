@@ -7,7 +7,7 @@ const categorias = [
     { 
         id: 'tablas', 
         nome: 'Tablas Completas', 
-        itens: ['Tabla Ibérica', 'Tabla de Quesos', 'Tabla Mixta Taramundi'] 
+        itens: ['Tabla fdfdsfd', 'Tabla de Quesos', 'Tabla Mixta Taramundi'] 
     },
     { 
         id: 'platos', 
