@@ -261,31 +261,30 @@
         let html = `<h2 class="categoria-title">${cat.nome}</h2><div class="product-grid">`;
 
         // 3. Loop pelos itens da categoria
-        cat.itens.forEach((itemString, index) => {
-            // AQUI MUDOU: Agora ele separa Nome, Descricao e Preco
-            const [nome, descricao, preco] = itemString.split(' | '); 
-            
-            let numeroFoto = index + 1; 
-            let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
-            let caminhoFoto = `img/${cat.id}/${nomeFoto}`; 
+        // Dentro de tu index.html, el loop debe quedar así:
+cat.itens.forEach((itemString, index) => {
+    // SEPARA LOS 3 DATOS
+    const [nome, descricao, preco] = itemString.split(' | '); 
+    
+    let numeroFoto = index + 1; 
+    let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
+    let caminhoFoto = `img/${cat.id}/${nomeFoto}`; 
 
-            html += `
-                <div class="product-card">
-                    <div class="product-img-container">
-                        <img src="${caminhoFoto}" 
-                             alt="${nome}" 
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'no-photo\'>Foto en camino...</div>'"
-                             style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                    <div class="product-info">
-                        <h3>${nome}</h3>
-                        <p>${descricao || 'Deliciosa opción preparada con ingredientes frescos.'}</p>
-                        
-                        <!-- AQUI MUDOU: Ele usa o preço que você digitou ou 0,00€ se esquecer -->
-                        <span class="product-price">${preco ||''}</span>
-                    </div>
-                </div>`;
-        });
+    html += `
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="${caminhoFoto}" 
+                     alt="${nome}" 
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'no-photo\'>Foto en camino...</div>'"
+                     style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="product-info">
+                <h3>${nome}</h3>
+                <p>${descricao || 'Preparado con ingredientes de alta calidad.'}</p>
+                <span class="product-price">${preco || 'Consultar'}</span>
+            </div>
+        </div>`;
+});
 
         html += `</div>`;
         section.innerHTML = html;
