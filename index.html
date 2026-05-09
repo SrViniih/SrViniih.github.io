@@ -8,7 +8,7 @@
     <style>
         :root {
             --amarelo: #ffcc00; 
-            --verde: #10b981;   /* Verde Taramundi */
+            --verde: #10b981;   
             --preto: #09090b;   
             --card-bg: #18181b; 
             --texto: #ffffff;
@@ -24,168 +24,184 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER & NAV (ESTILO PREMIUM) --- */
+        /* --- HEADER & NAV --- */
         header {
-            background-color: rgba(9, 9, 11, 0.95);
-            padding: 15px 0;
+            background-color: rgba(9, 9, 11, 0.98);
+            padding: 15px 5%;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             border-bottom: 1px solid #27272a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header-wrap { display: flex; flex-direction: column; align-items: center; }
         .brand { 
             font-family: 'Playfair Display', serif; 
-            font-size: 2.2rem; 
+            font-size: 1.8rem; 
             color: var(--verde); 
-            font-style: italic;
-            margin-bottom: 10px;
+            font-weight: bold;
+            text-decoration: none;
         }
 
-        nav { width: 100%; overflow-x: auto; white-space: nowrap; padding: 5px 0; }
+        .nav-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        nav { width: 100%; overflow-x: auto; white-space: nowrap; text-align: center; }
         nav::-webkit-scrollbar { display: none; }
 
-        nav ul { display: inline-flex; gap: 25px; padding: 0 30px; list-style: none; }
+        nav ul { display: inline-flex; gap: 20px; list-style: none; padding: 0 20px; }
         nav a { 
-            font-size: 0.8rem; 
+            font-size: 0.7rem; 
             text-transform: uppercase; 
-            font-weight: 600; 
-            color: var(--texto-secundario); 
+            font-weight: 700; 
+            color: var(--verde); /* Categorias em verde conforme pedido */
+            text-decoration: none;
             transition: 0.3s;
-            letter-spacing: 1px;
         }
         nav a:hover { color: var(--amarelo); }
 
+        .btn-reserva-header {
+            background-color: var(--amarelo);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        .btn-reserva-header:hover { transform: scale(1.05); background-color: #e6b800; }
+
         /* --- HERO --- */
         .hero {
-            height: 65vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-            display: flex; align-items: center; justify-content: center; text-align: center; margin-top: 120px;
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            margin-top: 60px;
         }
         .hero h2 { 
             font-family: 'Playfair Display', serif;
-            font-size: 4rem; 
+            font-size: 5rem; 
             color: var(--texto); 
+            margin-bottom: 10px;
         }
-        .hero p { color: var(--amarelo); letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; margin-top: 10px;}
+        .hero p { color: var(--texto-secundario); font-size: 1.1rem; margin-bottom: 30px; }
+
+        .btn-hero {
+            background-color: var(--amarelo);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+        }
+        .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5); }
 
         /* --- MENU SECTION --- */
-        .menu-section { padding: 80px 0; max-width: 1200px; margin: auto; padding: 20px; }
-        
+        .menu-section { padding: 60px 5%; max-width: 1300px; margin: auto; }
         .categoria-title {
-            font-size: 2.5rem; 
+            font-size: 2.2rem; 
             color: var(--amarelo); 
-            margin: 60px 0 30px;
+            margin: 50px 0 25px;
             border-left: 5px solid var(--verde); 
-            padding-left: 20px;
+            padding-left: 15px;
             font-family: 'Playfair Display', serif;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .product-card {
             background-color: var(--card-bg); 
-            border-radius: 15px;
-            padding: 25px; 
+            border-radius: 12px;
+            padding: 20px; 
             border: 1px solid #27272a; 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s;
         }
-        .product-card:hover { 
-            border-color: var(--amarelo); 
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        .product-card:hover { border-color: var(--amarelo); }
 
-        .product-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 8px; }
-        .product-info p { font-size: 0.9rem; color: var(--texto-secundario); margin-bottom: 15px; }
-        .product-price { color: var(--amarelo); font-weight: 600; font-size: 1.3rem; display: block; border-top: 1px solid #27272a; padding-top: 15px; }
+        .product-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; margin-bottom: 5px; }
+        .product-info p { font-size: 0.85rem; color: var(--texto-secundario); margin-bottom: 15px; }
+        .product-price { color: var(--amarelo); font-weight: bold; font-size: 1.2rem; }
 
-        /* --- RESERVAS --- */
-        .reserva-section { background-color: #111113; padding: 100px 20px; text-align: center; border-top: 1px solid #27272a; }
-        .reserva-wrap { max-width: 550px; margin: auto; text-align: left; }
+        /* --- RESERVAS FORM --- */
+        .reserva-section { background-color: #111113; padding: 80px 20px; text-align: center; border-top: 1px solid #27272a; }
+        .reserva-wrap { max-width: 500px; margin: auto; text-align: left; }
         
-        label { color: var(--amarelo); font-size: 0.8rem; text-transform: uppercase; font-weight: 600; }
-        
-        input, select {
-            width: 100%; padding: 15px; background: #1e1e21; border: 1px solid #3f3f46;
-            border-radius: 10px; color: #fff; margin-top: 8px; margin-bottom: 20px;
-            font-family: 'Poppins', sans-serif;
+        input {
+            width: 100%; padding: 15px; background: #27272a; border: 1px solid #3f3f46;
+            border-radius: 8px; color: #fff; margin: 10px 0 20px;
         }
         
-        input:focus { border-color: var(--verde); outline: none; }
-
         .btn-confirmar {
-            width: 100%; background-color: var(--verde); color: white; padding: 18px;
-            border: none; border-radius: 10px; font-weight: bold; cursor: pointer;
-            font-size: 1rem; transition: 0.3s;
-            text-transform: uppercase; letter-spacing: 1px;
+            width: 100%; background-color: var(--verde); color: white; padding: 15px;
+            border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem;
         }
-        .btn-confirmar:hover { background-color: #059669; transform: scale(1.02); }
 
-        footer { padding: 60px; text-align: center; border-top: 1px solid #27272a; font-size: 0.85rem; color: var(--texto-secundario); }
+        footer { padding: 40px; text-align: center; border-top: 1px solid #27272a; color: var(--texto-secundario); font-size: 0.8rem; }
 
-        @media (max-width: 768px) { 
-            .hero h2 { font-size: 2.8rem; } 
-            .brand { font-size: 1.8rem; }
+        @media (max-width: 768px) {
+            header { padding: 10px 2%; }
+            .hero h2 { font-size: 3rem; }
+            .nav-container { display: none; } /* Oculta menu longo no mobile para focar no botão */
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="header-wrap">
-        <span class="brand">Taramundi</span>
+    <a href="#" class="brand">Taramundi</a>
+    <div class="nav-container">
         <nav>
-            <ul id="nav-list">
-                <!-- Gerado por JS -->
-            </ul>
+            <ul id="nav-list"></ul>
         </nav>
     </div>
+    <a href="#reserva" class="btn-reserva-header">Reserva tu Mesa</a>
 </header>
 
 <section class="hero">
-    <div class="hero-content">
-        <h2>Taramundi</h2>
-        <p>Tradición & Sabor Gallego</p>
-    </div>
+    <h2>Taramundi</h2>
+    <p>Tradición y Sabor Autêntico. Explore nuestra cocina.</p>
+    <a href="#reserva" class="btn-hero">Reserva tu Mesa</a>
 </section>
 
-<main class="menu-section" id="menu-container">
-    <!-- As categorias e 64 produtos aparecerão aqui -->
-</main>
+<main class="menu-section" id="menu-container"></main>
 
 <section id="reserva" class="reserva-section">
     <div class="reserva-wrap">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px; color: #fff; text-align: center;">Reserva tu Mesa</h2>
-        <p style="text-align: center; color: var(--texto-secundario); margin-bottom: 40px;">Consulte disponibilidad vía WhatsApp al instante.</p>
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; color: #fff; text-align: center; margin-bottom: 30px;">Hacer una Reserva</h2>
         <form id="form-reserva">
-            <div class="form-group">
-                <label>Fecha de la Reserva</label>
-                <input type="date" id="data" required>
-            </div>
-            <div class="form-group">
-                <label>Hora</label>
-                <input type="time" id="hora" required>
-            </div>
-            <button type="submit" class="btn-confirmar">
-                Verificar disponibilidad en WhatsApp
-            </button>
+            <label>Fecha</label>
+            <input type="date" id="data" required>
+            <label>Hora</label>
+            <input type="time" id="hora" required>
+            <button type="submit" class="btn-confirmar">Confirmar por WhatsApp</button>
         </form>
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2026 Taramundi Bar & Restaurante. Todos los derechos reservados.</p>
-</footer>
+<footer><p>&copy; 2026 Taramundi Bar & Restaurante.</p></footer>
 
 <script>
-    // LISTA DE CATEGORIAS CONFORME SOLICITADO
     const categorias = [
         { id: 'desayunos', nome: 'Desayunos', qtd: 16 },
         { id: 'tablas', nome: 'Tablas Completas', qtd: 3 },
@@ -202,46 +218,28 @@
     const menuContainer = document.getElementById('menu-container');
     const navList = document.getElementById('nav-list');
 
-    // GERA O MENU AUTOMATICAMENTE
     categorias.forEach(cat => {
-        // Adiciona na Nav
         navList.innerHTML += `<li><a href="#${cat.id}">${cat.nome}</a></li>`;
-
-        // Cria a Seção no Menu
-        let section = document.createElement('section');
-        section.id = cat.id;
-        
-        let html = `<h2 class="categoria-title">${cat.nome}</h2><div class="product-grid">`;
-        
+        let html = `<section id="${cat.id}"><h2 class="categoria-title">${cat.nome}</h2><div class="product-grid">`;
         for (let i = 1; i <= cat.qtd; i++) {
             html += `
                 <div class="product-card">
                     <div class="product-info">
-                        <h3>${cat.nome} Specia #${i}</h3>
-                        <p>Ingredientes frescos y preparación tradicional al estilo Taramundi.</p>
-                        <span class="product-price">12,50€</span>
+                        <h3>${cat.nome} Item #${i}</h3>
+                        <p>Descripción especial con los mejores ingredientes de la región.</p>
+                        <span class="product-price">12,90€</span>
                     </div>
-                </div>
-            `;
+                </div>`;
         }
-        
-        html += `</div>`;
-        section.innerHTML = html;
-        menuContainer.appendChild(section);
+        html += `</div></section>`;
+        menuContainer.innerHTML += html;
     });
 
-    // SISTEMA DE RESERVA
     document.getElementById('form-reserva').addEventListener('submit', function(e) {
-        e.preventDefault(); 
-        const data = document.getElementById('data').value;
-        const hora = document.getElementById('hora').value;
-        const telefone = "34600000000"; // Mudar para o número real
-        
-        const texto = `Hola, ¿la reserva para la fecha ${data} a las ${hora} está disponible?`;
-        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
-        window.open(url, '_blank');
+        e.preventDefault();
+        const msg = `Hola, ¿la reserva para el día ${document.getElementById('data').value} a las ${document.getElementById('hora').value} está disponible?`;
+        window.open(`https://wa.me/34600000000?text=${encodeURIComponent(msg)}`, '_blank');
     });
 </script>
-
 </body>
 </html>
