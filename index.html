@@ -24,10 +24,10 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER & NAV --- */
+        /* --- HEADER & NAV (ESTILO PREMIUM) --- */
         header {
             background-color: rgba(9, 9, 11, 0.95);
-            padding: 10px 0;
+            padding: 15px 0;
             position: fixed;
             top: 0;
             width: 100%;
@@ -36,83 +36,114 @@
         }
 
         .header-wrap { display: flex; flex-direction: column; align-items: center; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--verde); font-style: italic; }
+        .brand { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.2rem; 
+            color: var(--verde); 
+            font-style: italic;
+            margin-bottom: 10px;
+        }
 
-        nav { width: 100%; overflow-x: auto; white-space: nowrap; padding: 10px 0; }
-        nav::-webkit-scrollbar { display: none; } /* Esconde barra de scroll */
+        nav { width: 100%; overflow-x: auto; white-space: nowrap; padding: 5px 0; }
+        nav::-webkit-scrollbar { display: none; }
 
-        nav ul { display: inline-flex; gap: 20px; padding: 0 20px; }
-        nav a { font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--texto-secundario); transition: 0.3s; }
+        nav ul { display: inline-flex; gap: 25px; padding: 0 30px; list-style: none; }
+        nav a { 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            font-weight: 600; 
+            color: var(--texto-secundario); 
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
         nav a:hover { color: var(--amarelo); }
 
         /* --- HERO --- */
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-            display: flex; align-items: center; justify-content: center; text-align: center; margin-top: 100px;
+            height: 65vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; margin-top: 120px;
         }
-        .hero h2 { font-size: 3.5rem; color: var(--verde); }
+        .hero h2 { 
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem; 
+            color: var(--texto); 
+        }
+        .hero p { color: var(--amarelo); letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; margin-top: 10px;}
 
         /* --- MENU SECTION --- */
-        .menu-section { padding: 60px 0; }
+        .menu-section { padding: 80px 0; max-width: 1200px; margin: auto; padding: 20px; }
+        
         .categoria-title {
-            font-size: 2rem; color: var(--amarelo); margin: 40px 0 20px;
-            border-left: 4px solid var(--verde); padding-left: 15px;
+            font-size: 2.5rem; 
+            color: var(--amarelo); 
+            margin: 60px 0 30px;
+            border-left: 5px solid var(--verde); 
+            padding-left: 20px;
             font-family: 'Playfair Display', serif;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
-            background-color: var(--card-bg); border-radius: 12px;
-            padding: 15px; border: 1px solid #27272a; transition: 0.3s;
+            background-color: var(--card-bg); 
+            border-radius: 15px;
+            padding: 25px; 
+            border: 1px solid #27272a; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .product-card:hover { border-color: var(--verde); transform: translateY(-3px); }
+        .product-card:hover { 
+            border-color: var(--amarelo); 
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-        .product-info h3 { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
-        .product-info p { font-size: 0.85rem; color: var(--texto-secundario); height: 40px; overflow: hidden; }
-        .product-price { color: var(--amarelo); font-weight: bold; font-size: 1.2rem; display: block; margin-top: 10px; }
+        .product-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 8px; }
+        .product-info p { font-size: 0.9rem; color: var(--texto-secundario); margin-bottom: 15px; }
+        .product-price { color: var(--amarelo); font-weight: 600; font-size: 1.3rem; display: block; border-top: 1px solid #27272a; padding-top: 15px; }
 
         /* --- RESERVAS --- */
-        .reserva-section { background-color: #111113; padding: 80px 20px; text-align: center; }
-        .reserva-wrap { max-width: 500px; margin: auto; text-align: left; }
-        .form-group { margin-bottom: 15px; }
+        .reserva-section { background-color: #111113; padding: 100px 20px; text-align: center; border-top: 1px solid #27272a; }
+        .reserva-wrap { max-width: 550px; margin: auto; text-align: left; }
+        
+        label { color: var(--amarelo); font-size: 0.8rem; text-transform: uppercase; font-weight: 600; }
+        
         input, select {
-            width: 100%; padding: 12px; background: #27272a; border: 1px solid #3f3f46;
-            border-radius: 8px; color: #fff; margin-top: 5px;
+            width: 100%; padding: 15px; background: #1e1e21; border: 1px solid #3f3f46;
+            border-radius: 10px; color: #fff; margin-top: 8px; margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
         }
+        
+        input:focus { border-color: var(--verde); outline: none; }
+
         .btn-confirmar {
-            width: 100%; background-color: var(--verde); color: white; padding: 15px;
-            border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 20px;
+            width: 100%; background-color: var(--verde); color: white; padding: 18px;
+            border: none; border-radius: 10px; font-weight: bold; cursor: pointer;
+            font-size: 1rem; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
         }
+        .btn-confirmar:hover { background-color: #059669; transform: scale(1.02); }
 
-        footer { padding: 40px; text-align: center; border-top: 1px solid #27272a; font-size: 0.8rem; color: var(--texto-secundario); }
+        footer { padding: 60px; text-align: center; border-top: 1px solid #27272a; font-size: 0.85rem; color: var(--texto-secundario); }
 
-        @media (max-width: 768px) { .hero h2 { font-size: 2.5rem; } }
+        @media (max-width: 768px) { 
+            .hero h2 { font-size: 2.8rem; } 
+            .brand { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="container header-wrap">
+    <div class="header-wrap">
         <span class="brand">Taramundi</span>
         <nav>
-            <ul>
-                <li><a href="#desayunos">Desayunos</a></li>
-                <li><a href="#tablas">Tablas</a></li>
-                <li><a href="#platos">Platos</a></li>
-                <li><a href="#sartenes">Sartenes</a></li>
-                <li><a href="#hamburguesas">Burgers</a></li>
-                <li><a href="#raciones">Raciones</a></li>
-                <li><a href="#bocatas">Bocatas</a></li>
-                <li><a href="#sandwich">Sandwich</a></li>
-                <li><a href="#ensaladas">Ensaladas</a></li>
-                <li><a href="#postres">Postres</a></li>
+            <ul id="nav-list">
+                <!-- Gerado por JS -->
             </ul>
         </nav>
     </div>
@@ -120,22 +151,22 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h2>Tradición Gallega</h2>
-        <p>Menú Digital & Reservas</p>
+        <h2>Taramundi</h2>
+        <p>Tradición & Sabor Gallego</p>
     </div>
 </section>
 
-<section class="menu-section container" style="max-width: 1200px; margin: auto; padding: 20px;">
-    <!-- As categorias serão geradas pelo JavaScript -->
-    <div id="conteudo-menu"></div>
-</section>
+<main class="menu-section" id="menu-container">
+    <!-- As categorias e 64 produtos aparecerão aqui -->
+</main>
 
 <section id="reserva" class="reserva-section">
     <div class="reserva-wrap">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 20px;">Reserva tu Mesa</h2>
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px; color: #fff; text-align: center;">Reserva tu Mesa</h2>
+        <p style="text-align: center; color: var(--texto-secundario); margin-bottom: 40px;">Consulte disponibilidad vía WhatsApp al instante.</p>
         <form id="form-reserva">
             <div class="form-group">
-                <label>Fecha</label>
+                <label>Fecha de la Reserva</label>
                 <input type="date" id="data" required>
             </div>
             <div class="form-group">
@@ -143,7 +174,7 @@
                 <input type="time" id="hora" required>
             </div>
             <button type="submit" class="btn-confirmar">
-                Consultar disponibilidad por WhatsApp
+                Verificar disponibilidad en WhatsApp
             </button>
         </form>
     </div>
@@ -154,56 +185,61 @@
 </footer>
 
 <script>
-    // --- BANCO DE DADOS ATUALIZADO (64 ITENS TOTAL) ---
+    // LISTA DE CATEGORIAS CONFORME SOLICITADO
     const categorias = [
-        { id: 'desayunos', titulo: 'Desayunos', qtd: 16 },
-        { id: 'tablas', titulo: 'Tablas Completas', qtd: 3 },
-        { id: 'platos', titulo: 'Platos Combinados', qtd: 4 },
-        { id: 'sartenes', titulo: 'Sartenes Taramundi', qtd: 7 },
-        { id: 'hamburguesas', titulo: 'Hamburguesas', qtd: 9 },
-        { id: 'raciones', titulo: 'Raciones', qtd: 8 },
-        { id: 'bocatas', titulo: 'Bocatas', qtd: 7 },
-        { id: 'sandwich', titulo: 'Sandwich y Perritos', qtd: 5 },
-        { id: 'ensaladas', titulo: 'Ensaladas de la Casa', qtd: 3 },
-        { id: 'postres', titulo: 'Postres', qtd: 2 }
+        { id: 'desayunos', nome: 'Desayunos', qtd: 16 },
+        { id: 'tablas', nome: 'Tablas Completas', qtd: 3 },
+        { id: 'platos', nome: 'Platos Combinados', qtd: 4 },
+        { id: 'sartenes', nome: 'Sartenes Taramundi', qtd: 7 },
+        { id: 'hamburguesas', nome: 'Hamburguesas', qtd: 9 },
+        { id: 'raciones', nome: 'Raciones', qtd: 8 },
+        { id: 'bocatas', nome: 'Bocatas', qtd: 7 },
+        { id: 'sandwich', nome: 'Sandwich y Perritos', qtd: 5 },
+        { id: 'ensaladas', nome: 'Ensaladas de la Casa', qtd: 3 },
+        { id: 'postres', nome: 'Postres', qtd: 2 }
     ];
 
-    const menuConteudo = document.getElementById('conteudo-menu');
+    const menuContainer = document.getElementById('menu-container');
+    const navList = document.getElementById('nav-list');
 
-    // Gera os produtos automaticamente para o seu template
+    // GERA O MENU AUTOMATICAMENTE
     categorias.forEach(cat => {
-        // Criar o título da categoria
-        let html = `<div id="${cat.id}"><h2 class="categoria-title">${cat.titulo}</h2><div class="product-grid">`;
+        // Adiciona na Nav
+        navList.innerHTML += `<li><a href="#${cat.id}">${cat.nome}</a></li>`;
+
+        // Cria a Seção no Menu
+        let section = document.createElement('section');
+        section.id = cat.id;
         
-        // Criar os produtos da categoria
+        let html = `<h2 class="categoria-title">${cat.nome}</h2><div class="product-grid">`;
+        
         for (let i = 1; i <= cat.qtd; i++) {
             html += `
                 <div class="product-card">
                     <div class="product-info">
-                        <h3>${cat.titulo} #${i}</h3>
-                        <p>Descripción premium del producto seleccionado para el menú.</p>
+                        <h3>${cat.nome} Specia #${i}</h3>
+                        <p>Ingredientes frescos y preparación tradicional al estilo Taramundi.</p>
                         <span class="product-price">12,50€</span>
                     </div>
                 </div>
             `;
         }
         
-        html += `</div></div>`;
-        menuConteudo.innerHTML += html;
+        html += `</div>`;
+        section.innerHTML = html;
+        menuContainer.appendChild(section);
     });
 
-    // --- SISTEMA DE RESERVA VIA WHATSAPP ---
+    // SISTEMA DE RESERVA
     document.getElementById('form-reserva').addEventListener('submit', function(e) {
         e.preventDefault(); 
-
         const data = document.getElementById('data').value;
         const hora = document.getElementById('hora').value;
-        const telefoneWhats = "34600000000"; // Substitua pelo número real da Espanha
-
-        // Mensagem conforme solicitado
-        const mensagem = encodeURIComponent(`Hola, ¿la reserva para la fecha ${data} a las ${hora} está disponible?`);
-
-        window.open(`https://wa.me/${telefoneWhats}?text=${mensagem}`, '_blank');
+        const telefone = "34600000000"; // Mudar para o número real
+        
+        const texto = `Hola, ¿la reserva para la fecha ${data} a las ${hora} está disponible?`;
+        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
     });
 </script>
 
