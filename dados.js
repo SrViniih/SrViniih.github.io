@@ -21,32 +21,32 @@ const categorias = [
         id: 'tablas', 
         nome: 'Tablas Completas', 
         itens: [
-            'Tabla Taramundi | Selección especial de los mejores productos de la casa.',
-            'Tabla de Quesos | Variedad de quesos locales acompañados de frutos secos.',
-            'Tabla Mixta Taramundi | El equilibrio entre embutidos ibéricos y quesos artesanos.'
+            'Cachopo individual | Selección especial de los mejores productos de la casa.',
+            'Cachopo para dos | Variedad de quesos locales acompañados de frutos secos.',
+            'tabla taramundi | El equilibrio entre embutidos ibéricos y quesos artesanos.'
         ] 
     },
     { 
         id: 'platos', 
         nome: 'Platos Combinados', 
         itens: [
-            'Plato del Día | Selección del chef con los productos más frescos del mercado.',
-            'Combinado de Lomo | Filetes de lomo adobado, huevo frito y patatas.',
-            'Pollo Asado con Patatas | Medio pollo jugoso con guarnición tradicional.',
-            'Entrecot con Guarnición | Carne de ternera premium con patatas y pimientos.'
+            'Rabas | Selección del chef con los productos más frescos del mercado.',
+            'Lomo a la plancha | Filetes de lomo adobado, huevo frito y patatas.',
+            'Prechuga la plancha | Medio pollo jugoso con guarnición tradicional.',
+            'Ternera a la plancha | Carne de ternera premium con patatas y pimientos.'
         ] 
     },
     { 
         id: 'sartenes', 
         nome: 'Sartenes Taramundi', 
         itens: [
-            'Sartén de Gulas | Salteado de gulas con ajo, guindilla e hilos de huevo.',
-            'Sartén Asturiana | Con chorizo local, patatas panadera y huevos rotos.',
-            'Sartén de Chorizo | Chorizo de aldea frito con base de patatas crujientes.',
-            'Sartén de la Casa | Nuestra especialidad con ingredientes secretos de temporada.',
-            'Sartén Vegetariana | Mix de verduras de la huerta salteadas con patata.',
-            'Sartén de Pulpo | Pulpo a la gallega sobre cama de patata y pimentón.',
-            'Sartén de Setas | Variedad de setas silvestres con jamón y huevo.'
+            'Huevos rotos | Salteado de gulas con ajo, guindilla e hilos de huevo.',
+            'Huevos rotos con jijas | Con chorizo local, patatas panadera y huevos rotos.',
+            'Huevos rotos con morcilla | Chorizo de aldea frito con base de patatas crujientes.',
+            'Huevos con torrezno | Nuestra especialidad con ingredientes secretos de temporada.',
+            'Huevos rotos con lacón | Mix de verduras de la huerta salteadas con patata.',
+            'Huevos rotos jamón serrano | Pulpo a la gallega sobre cama de patata y pimentón.',
+            'Huevos con bacon | Variedad de setas silvestres con jamón y huevo.'
         ] 
     },
     { 
@@ -54,61 +54,61 @@ const categorias = [
         nome: 'Hamburguesas', 
         itens: [
             'Clásica | 180g de carne, lechuga, tomate y cebolla.',
-            'Queso Extrema | Doble ración de queso fundido para los amantes do lácteo.',
-            'Taramundi Burger | Nuestra burger estrella con salsa especial de la casa.',
-            'Veggie Delight | Hamburguesa de garbanzos y espinacas con alioli vegetal.',
-            'Bacon Lover | Con extra de bacon crujiente y cebolla caramelizada.',
-            'Pollo Crispy | Pechuga de pollo rebozada con cereales y mayonesa suave.',
-            'Doble Smash | Dos discos de carne finos y costrosos con queso cheddar.',
-            'BBQ Special | Bañada en salsa barbacoa ahumada y aros de cebolla.',
-            'Hambúrguer de la Abuela | Sabor tradicional con huevo frito y pimientos.'
+            'Clásica doble | Doble ración de queso fundido para los amantes do lácteo.',
+            'Krispy clásica | Nuestra burger estrella con salsa especial de la casa.',
+            'Krispy clásica doble | Hamburguesa de garbanzos y espinacas con alioli vegetal.',
+            'Suprema | Con extra de bacon crujiente y cebolla caramelizada.',
+            'Suprema krispy | Pechuga de pollo rebozada con cereales y mayonesa suave.',
+            'Suprema doble | Dos discos de carne finos y costrosos con queso cheddar.',
+            'Suprema krispy doble | Bañada en salsa barbacoa ahumada y aros de cebolla.',
+            'Taramundi | Sabor tradicional con huevo frito y pimientos.'
         ] 
     },
     { 
         id: 'raciones', 
         nome: 'Raciones', 
         itens: [
-            'Patatas Bravas | Crujientes por fuera con nuestra salsa picante secreta.',
-            'Calamares | A la romana, frescos y con un toque de limón.',
-            'Croquetas Caseras | Cremosas por dentro, receta de la familia.',
-            'Pimientos Padrón | Unos pican y otros no, directos de la huerta.',
-            'Alitas de Pollo | Marinadas con especias y fritas al punto de miel.',
-            'Gambas al Ajillo | Gambas peladas saltadas con ajo y aceite de oliva.',
-            'Ensaladilla Rusa | Patata, atún y verduras con mayonesa artesanal.',
-            'Nachos Taramundi | Con queso fundido, guacamole y carne picada.'
+            'torrezno | Crujientes por fuera con nuestra salsa picante secreta.',
+            'Patatas 3 salsas | A la romana, frescos y con un toque de limón.',
+            'Patatas bravas | Cremosas por dentro, receta de la familia.',
+            'Patatas de la casa | Unos pican y otros no, directos de la huerta.',
+            'Rabas | Marinadas con especias y fritas al punto de miel.',
+            'Fingers | Gambas peladas saltadas con ajo y aceite de oliva.',
+            'Alitas | Patata, atún y verduras con mayonesa artesanal.',
+            'Calamares | Con queso fundido, guacamole y carne picada.'
         ] 
     },
     { 
         id: 'bocatas', 
         nome: 'Bocatas', 
         itens: [
-            'Serranito | Lomo, jamón serrano, pimiento frito y alioli.',
-            'Bocata de Calamares | Un clásico indispensable en pan recién horneado.',
-            'Lomo con Queso | Filetes de lomo a la plancha con queso fundido.',
-            'Bocata Vegano | Verduras asadas, hummus y brotes tiernos.',
-            'Pepito de Ternera | Ternera de primera con un toque de ajo y sal gorda.',
-            'Bocata de Tortilla | Tradición pura: tortilla de patata en pan de barra.',
-            'Especial Taramundi | El bocata definitivo con los mejores cortes de carne.'
+            'Calamares | Lomo, jamón serrano, pimiento frito y alioli.',
+            'Lomo | Un clásico indispensable en pan recién horneado.',
+            'Bacon con queso | Filetes de lomo a la plancha con queso fundido.',
+            'Rabas | Verduras asadas, hummus y brotes tiernos.',
+            'Ternera | Ternera de primera con un toque de ajo y sal gorda.',
+            'Bocatas de  la casa | Tradición pura: tortilla de patata en pan de barra.',
+            'Panceta | El bocata definitivo con los mejores cortes de carne.'
         ] 
     },
     { 
         id: 'sandwich', 
         nome: 'Sandwich y Perritos', 
         itens: [
-            'Sandwich Mixto | Jamón york y queso fundido en pan de molde.',
-            'Sandwich Club | Pollo, bacon, huevo, lechuga, tomate y mayonesa.',
-            'Hot Dog Clásico | Salchicha Frankfurt grande, ketchup e mostaza.',
-            'Hot Dog Especial | Con cebolla frita, queso y nuestra salsa brava.',
-            'Vegetal Sandwich | Espárragos, huevo duro, lechuga y mayonesa.'
+            'Sandwich mixto | Jamón york y queso fundido en pan de molde.',
+            'Sandwich bacon  | Pollo, bacon, huevo, lechuga, tomate y mayonesa.',
+            'Sandwich vegetal | Salchicha Frankfurt grande, ketchup e mostaza.',
+            'Perrito clásico | Con cebolla frita, queso y nuestra salsa brava.',
+            'Perrito Taramundi | Espárragos, huevo duro, lechuga y mayonesa.'
         ] 
     },
     { 
         id: 'ensaladas', 
         nome: 'Ensaladas de la Casa', 
         itens: [
-            'César | Pollo crujiente, costrones, queso parmesano y salsa césar.',
-            'Mixta | Lechuga, tomate, cebolla, atún, huevo duro y aceitunas.',
-            'Ensalada Taramundi | Gourmet: brotes, frutos secos, queso de cabra y miel.'
+            'Ensalada clásica | Pollo crujiente, costrones, queso parmesano y salsa césar.',
+            'Ensalada mixta | Lechuga, tomate, cebolla, atún, huevo duro y aceitunas.',
+            'Ensala César | Gourmet: brotes, frutos secos, queso de cabra y miel.'
         ] 
     },
     { 
@@ -116,7 +116,7 @@ const categorias = [
         nome: 'Postres', 
         itens: [
             'Tarta de Queso | Receta casera súper cremosa con frutos rojos.',
-            'Flan Casero | Con leche condensada y caramelo artesanal.'
+            'Tarta de queso y tres chocolate | Con leche condensada y caramelo artesanal.'
         ] 
     }
 ];
