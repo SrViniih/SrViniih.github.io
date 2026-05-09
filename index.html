@@ -79,46 +79,66 @@ footer {
     color: var(--texto-secundario);
 }
 
+/* --- ESTILOS DO RODAPÉ CENTRALIZADO --- */
+footer {
+    padding: 60px 20px 40px;
+    background-color: #09090b;
+    border-top: 1px solid #27272a;
+    width: 100%;
+}
+
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column; /* Coloca um embaixo do outro */
+    align-items: center;    /* CENTRALIZA TUDO NO MEIO */
+    justify-content: center;
+    gap: 15px;
+    text-align: center;
 }
 
 .footer-item {
     display: flex;
     align-items: center;
+    justify-content: center; /* Garante que o conteúdo interno também centralize */
     gap: 10px;
     font-size: 1rem;
     color: var(--texto);
     text-decoration: none;
     transition: 0.3s;
+    width: fit-content; /* Faz o link ter apenas o tamanho do texto */
 }
 
 .footer-item i {
-    color: var(--verde); /* Ícones em Verde */
+    color: var(--verde);
     font-size: 1.2rem;
 }
 
-.instagram-link:hover {
+/* Efeito de destaque ao passar o mouse */
+.footer-item:hover {
     color: var(--amarelo);
     transform: translateY(-2px);
 }
 
 .footer-divider {
     width: 100%;
-    max-width: 300px;
+    max-width: 250px; /* Linha de separação menor e centralizada */
     height: 1px;
     background: #27272a;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .copyright {
     font-size: 0.8rem;
     color: #52525b;
+}
+
+/* Ajuste rápido para mobile */
+@media (max-width: 768px) {
+    .footer-item {
+        font-size: 0.9rem;
+    }
 }
         /* Custom Scrollbar Minimalista */
         nav { width: 100%; overflow-x: auto; white-space: nowrap; text-align: center; scrollbar-width: thin; scrollbar-color: #27272a transparent; }
@@ -330,13 +350,13 @@ footer {
 </section>
 
 <footer>
-    <!-- Localização com Link para Google Maps -->
-<a href="https://www.google.es/maps/place/Taramundi/@41.6387788,-4.7245865,17z/data=!3m1!4b1!4m6!3m5!1s0xd471348060e3fd9:0xd9dfb7357af9c9b1!8m2!3d41.6387748!4d-4.7220116!16s%2Fg%2F11qmr0dzxt?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D" 
-   target="_blank" 
-   class="footer-item location-link">
-    <i class="fas fa-map-marker-alt"></i>
-    <span>C. Embajadores, 14, 47013 Valladolid</span>
-</a>
+    <div class="footer-container">
+        <!-- Localização -->
+        <a href="https://www.google.es/maps/place/Taramundi/@41.6387788,-4.7245865,17z/data=!3m1!4b1!4m6!3m5!1s0xd471348060e3fd9:0xd9dfb7357af9c9b1!8m2!3d41.6387748!4d-4.7220116!16s%2Fg%2F11qmr0dzxt?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D" 
+           target="_blank" class="footer-item location-link">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>C. Embajadores, 14, 47013 Valladolid</span>
+        </a>
 
         <!-- Instagram -->
         <a href="https://www.instagram.com/taramundi16" target="_blank" class="footer-item instagram-link">
