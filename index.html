@@ -262,7 +262,8 @@
 
         // 3. Loop pelos itens da categoria
         cat.itens.forEach((itemString, index) => {
-            const [nome, descricao] = itemString.split(' | '); 
+            // AQUI MUDOU: Agora ele separa Nome, Descricao e Preco
+            const [nome, descricao, preco] = itemString.split(' | '); 
             
             let numeroFoto = index + 1; 
             let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
@@ -279,7 +280,9 @@
                     <div class="product-info">
                         <h3>${nome}</h3>
                         <p>${descricao || 'Deliciosa opción preparada con ingredientes frescos.'}</p>
-                        <span class="product-price">12,90€</span>
+                        
+                        <!-- AQUI MUDOU: Ele usa o preço que você digitou ou 0,00€ se esquecer -->
+                        <span class="product-price">${preco || '0,00€'}</span>
                     </div>
                 </div>`;
         });
