@@ -29,79 +29,64 @@
             background-color: var(--preto);
             color: var(--texto);
             line-height: 1.6;
-            padding-top: 80px; /* Evita que o hero suba para trás do header fixo */
+            padding-top: 100px; /* Evita que o hero suba para trás do header fixo */
         }
 
-        /* --- HEADER & LOGO --- */
-       /* --- HEADER & LOGO AMPLIADOS --- */
-header {
-    background-color: rgba(9, 9, 11, 0.98);
-    padding: 0 5%;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100px; /* Aumentamos de 80px para 100px para dar mais espaço */
-    z-index: 1000;
-    border-bottom: 1px solid #27272a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        /* --- HEADER & LOGO AMPLIADOS --- */
+        header {
+            background-color: rgba(9, 9, 11, 0.98);
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 1000;
+            border-bottom: 1px solid #27272a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.brand {
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
+        .brand {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            text-decoration: none;
+        }
 
-.taramundi-img {
-    height: 100px; /* Aumentamos de 55px para 75px para ficar bem imponente */
-    width: auto;
-    object-fit: contain;
-    transition: 0.3s;
-}
+        .taramundi-img {
+            height: 75px; 
+            width: auto;
+            object-fit: contain;
+            transition: 0.3s;
+        }
 
-body {
-    padding-top: 100px; /* Ajuste o padding do body para a mesma altura do header */
-}
-
-/* Ajuste Mobile para a logo não sumir */
-@media (max-width: 768px) {
-    header { 
-        height: auto; 
-        padding: 15px 2%; 
-    }
-    .taramundi-img { 
-        height: 80px; /* No celular ela também fica maior agora */
-    }
-    body { 
-        padding-top: 170px; /* Espaço maior no mobile por causa do menu que quebra linha */
-    }
-}
-
+        .nav-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0 20px;
+        }
+        
         /* Custom Scrollbar Minimalista */
+        nav { width: 100%; overflow-x: auto; white-space: nowrap; text-align: center; scrollbar-width: thin; scrollbar-color: #27272a transparent; }
         nav::-webkit-scrollbar { height: 4px; }
         nav::-webkit-scrollbar-track { background: transparent; }
         nav::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
         nav:hover::-webkit-scrollbar-thumb { background: var(--verde); }
-        nav { scrollbar-width: thin; scrollbar-color: #27272a transparent; }
-
+        
         nav ul { display: inline-flex; gap: 20px; list-style: none; padding: 0 10px; }
         nav a { 
-    font-size: 0.80rem;          /* Aumentamos de 0.7 para 0.9 para maior nitidez */
-    text-transform: uppercase; 
-    font-weight: 600;           /* Um peso 600 fica mais limpo que o 700 para leitura */
-    color: var(--verde); 
-    text-decoration: none;
-    letter-spacing: 1px;        /* Espaçamento entre letras ajuda na leitura rápida */
-    transition: 0.3s;
-}
-
-/* Efeito para quando o mouse passa por cima */
-nav a:hover { 
-    color: var(--amarelo); 
-    text-shadow: 0 0 8px rgba(255, 204, 0, 0.4); /* Leve brilho ao focar */
-}
+            font-size: 0.90rem;
+            text-transform: uppercase; 
+            font-weight: 600;
+            color: var(--verde); 
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--amarelo); text-shadow: 0 0 8px rgba(255, 204, 0, 0.4); }
 
         .btn-reserva-header {
             background-color: var(--amarelo);
@@ -127,13 +112,41 @@ nav a:hover {
             justify-content: center; 
             text-align: center; 
         }
-        .hero h2 { 
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem; 
-            color: var(--texto); 
-            margin-bottom: 10px;
-        }
+        .hero h2 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--texto); margin-bottom: 10px; }
         .hero p { color: var(--texto-secundario); font-size: 1.1rem; margin-bottom: 30px; }
+        .btn-hero { background-color: var(--amarelo); color: #000; padding: 15px 40px; border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+        .btn-hero:hover { transform: translateY(-3px); }
+
+        /* --- CARROSSEL --- */
+        .carousel-section { padding: 40px 5% 0 5%; max-width: 1300px; margin: auto; overflow: hidden; }
+        .carousel-container { position: relative; width: 100%; border-radius: 20px; background: #111113; border: 1px solid #27272a; overflow: hidden; margin-top: 15px; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            gap: 40px;
+        }
+
+        .slide-img-box { width: 45%; height: 300px; border-radius: 15px; overflow: hidden; border: 1px solid #333; }
+        .slide-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .slide-info-box { width: 55%; }
+        .badge-promo { background: var(--amarelo); color: #000; padding: 5px 12px; border-radius: 5px; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+        .slide-info-box h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: #fff; margin-bottom: 15px; }
+        .slide-info-box p { color: var(--texto-secundario); font-size: 1.1rem; margin-bottom: 25px; }
+        .price-promo { color: var(--verde); font-size: 2.2rem; font-weight: bold; }
+
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10; font-size: 1.2rem; transition: 0.3s; }
+        .carousel-btn:hover { background: var(--verde); }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        .carousel-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
+        .dot { width: 10px; height: 10px; background: #333; border-radius: 50%; cursor: pointer; }
+        .dot.active { background: var(--amarelo); width: 30px; border-radius: 10px; }
 
         /* --- MENU SECTION --- */
         .menu-section { padding: 40px 5%; max-width: 1300px; margin: auto; }
@@ -146,37 +159,12 @@ nav a:hover {
             font-family: 'Playfair Display', serif;
         }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
-            background-color: var(--card-bg); 
-            border-radius: 12px;
-            padding: 20px; 
-            border: 1px solid #27272a; 
-            transition: 0.3s;
-        }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .product-card { background-color: var(--card-bg); border-radius: 12px; padding: 20px; border: 1px solid #27272a; transition: 0.3s; }
         .product-card:hover { border-color: var(--amarelo); transform: translateY(-5px); }
 
-        .product-img-container {
-            width: 100%;
-            height: 200px;
-            background: #1e1e21;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 15px;
-            border: 1px solid #27272a;
-        }
-
-        .no-photo {
-            padding: 85px 0;
-            text-align: center;
-            color: #3f3f46;
-            font-size: 0.8rem;
-        }
+        .product-img-container { width: 100%; height: 200px; background: #1e1e21; border-radius: 10px; overflow: hidden; margin-bottom: 15px; border: 1px solid #27272a; }
+        .no-photo { padding: 85px 0; text-align: center; color: #3f3f46; font-size: 0.8rem; }
 
         .product-info h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
         .product-info p { font-size: 0.85rem; color: var(--texto-secundario); margin-bottom: 15px; height: 40px; overflow: hidden; }
@@ -185,124 +173,39 @@ nav a:hover {
         /* --- RESERVAS --- */
         .reserva-section { background-color: #111113; padding: 60px 20px; text-align: center; border-top: 1px solid #27272a; }
         .reserva-wrap { max-width: 450px; margin: auto; text-align: left; }
-        input {
-            width: 100%; padding: 15px; background: #27272a; border: 1px solid #3f3f46;
-            border-radius: 8px; color: #fff; margin: 10px 0 20px; outline: none;
-        }
+        input { width: 100%; padding: 15px; background: #27272a; border: 1px solid #3f3f46; border-radius: 8px; color: #fff; margin: 10px 0 20px; outline: none; }
         input:focus { border-color: var(--verde); }
-        .btn-confirmar {
-            width: 100%; background-color: var(--verde); color: white; padding: 15px;
-            border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem;
-        }
-
+        .btn-confirmar { width: 100%; background-color: var(--verde); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
         footer { padding: 40px; text-align: center; border-top: 1px solid #27272a; color: var(--texto-secundario); font-size: 0.8rem; }
 
         /* Flatpickr Custom */
-        .flatpickr-calendar { background: #18181b !important; border: 1px solid #27272a !important; box-shadow: 0 10px 15px rgba(0,0,0,0.5) !important; }
+        .flatpickr-calendar { background: #18181b !important; border: 1px solid #27272a !important; }
         .flatpickr-time input:hover { background: var(--verde) !important; }
         .flatpickr-day.selected { background: var(--amarelo) !important; color: #000 !important; border: none; }
 
         /* --- MOBILE --- */
-        /* --- AJUSTE PARA CELULAR (CORRIGIDO) --- */
-@media (max-width: 768px) {
-    header { 
-        height: auto; 
-        padding: 10px 2%; 
-        flex-wrap: wrap; 
-        justify-content: space-between; 
-    }
+        @media (max-width: 768px) {
+            header { height: auto; padding: 10px 2%; flex-wrap: wrap; justify-content: space-between; }
+            .taramundi-img { height: 50px; }
+            
+            .nav-container { 
+                order: 3; width: 100%; margin: 8px 0 0 0; border-top: 1px solid #1a1a1c; 
+                padding-top: 8px; overflow-x: auto; display: block; -webkit-overflow-scrolling: touch; 
+            }
+            nav ul { gap: 20px; display: flex; flex-wrap: nowrap; padding: 0 15px 5px 15px; }
+            nav a { font-size: 0.85rem; white-space: nowrap; }
 
-    .taramundi-img { 
-        height: 45px; /* Ajuste leve para a logo não ocupar espaço demais */
-    }
+            .hero h2 { font-size: 2.5rem; }
+            .btn-reserva-header { padding: 8px 12px; font-size: 0.7rem; }
+            body { padding-top: 135px; } 
 
-    .nav-container { 
-        order: 3; 
-        width: 100%; 
-        margin-top: 8px; 
-        /* Deixando a barra de separação mais discreta (cinza bem escuro) */
-        border-top: 1px solid #1a1a1c; 
-        padding-top: 8px; 
-        overflow-x: auto; /* Permite o deslize horizontal */
-        display: block;
-        -webkit-overflow-scrolling: touch; /* Scroll suave para iPhone */
-    }
-
-    nav ul { 
-        gap: 20px; 
-        display: flex; 
-        flex-wrap: nowrap; /* IMPEDE que as categorias quebrem linha */
-        padding: 0 15px 5px 15px; /* Espaço nas laterais para o texto não colar na borda */
-    }
-
-    nav a { 
-        font-size: 0.85rem; 
-        white-space: nowrap; /* FORÇA o texto a ficar em uma linha só (ex: Tablas Completas) */
-        font-weight: 600;
-    }
-
-    .hero h2 { font-size: 2.5rem; }
-    .btn-reserva-header { padding: 8px 12px; font-size: 0.7rem; }
-    
-    /* Ajuste do topo para o conteúdo não começar debaixo do header */
-    body { padding-top: 135px; } 
-}
-/* --- ESTILOS DO CARROSSEL --- */
-.carousel-section { padding: 40px 5%; max-width: 1300px; margin: auto; overflow: hidden; }
-
-.carousel-container { position: relative; width: 100%; margin-top: 20px; }
-
-.carousel-track { 
-    display: flex; 
-    transition: transform 0.5s ease-in-out; 
-    gap: 20px;
-}
-
-.carousel-slide {
-    min-width: 100%; /* Mostra 1 por vez no mobile */
-    background: var(--card-bg);
-    border-radius: 15px;
-    border: 1px solid #27272a;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    gap: 30px;
-}
-
-/* No PC, o slide fica mais bonito com a imagem ao lado do texto */
-.slide-img { 
-    width: 40%; 
-    height: 300px; 
-    border-radius: 10px; 
-    object-fit: cover; 
-}
-
-.slide-info { width: 60%; }
-.slide-info h3 { font-family: 'Playfair Display'; font-size: 2rem; color: var(--amarelo); margin-bottom: 10px; }
-.slide-info p { color: var(--texto-secundario); margin-bottom: 20px; }
-.badge-novo { background: var(--verde); color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 0.7rem; text-transform: uppercase; }
-
-/* Botões */
-.carousel-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(0,0,0,0.5); color: white; border: none; padding: 15px;
-    cursor: pointer; border-radius: 50%; z-index: 10; transition: 0.3s;
-}
-.carousel-btn:hover { background: var(--verde); }
-.prev { left: -20px; }
-.next { right: -20px; }
-
-.carousel-dots { text-align: center; margin-top: 20px; }
-.dot { height: 10px; width: 10px; margin: 0 5px; background-color: #333; border-radius: 50%; display: inline-block; cursor: pointer; }
-.dot.active { background-color: var(--verde); width: 25px; border-radius: 10px; }
-
-/* Ajuste Mobile */
-@media (max-width: 768px) {
-    .carousel-slide { flex-direction: column; text-align: center; padding: 15px; }
-    .slide-img { width: 100%; height: 200px; }
-    .slide-info { width: 100%; }
-    .carousel-btn { display: none; } /* Esconde setas no mobile para usar o dedo */
-}
+            /* Ajustes Mobile Carrossel */
+            .carousel-slide { flex-direction: column; padding: 20px; gap: 20px; text-align: center; }
+            .slide-img-box { width: 100%; height: 200px; }
+            .slide-info-box { width: 100%; }
+            .slide-info-box h2 { font-size: 1.8rem; }
+            .carousel-btn { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -321,9 +224,14 @@ nav a:hover {
     <a href="#reserva" class="btn-reserva-header">Reserva tu Mesa</a>
 </header>
 
-<!-- SEÇÃO DE DESTAQUES (CARROSSEL) -->
+<section class="hero">
+    <h2>Taramundi</h2>
+    <p>Tradición y Sabor Auténtico. Explore nuestra cocina.</p>
+    <a href="#reserva" class="btn-hero">Reserva tu Mesa</a>
+</section>
+
 <!-- CARROSSEL 1: RECOMENDADOS -->
-<section class="carousel-section">
+<section class="carousel-section" id="recomendados-section">
     <h2 class="categoria-title" style="margin-top: 0;">Recomendados</h2>
     <div class="carousel-container" id="carousel-rec">
         <div class="carousel-track" id="track-rec"></div>
@@ -334,7 +242,7 @@ nav a:hover {
 </section>
 
 <!-- CARROSSEL 2: PRATOS NOVOS -->
-<section class="carousel-section">
+<section class="carousel-section" id="novos-section">
     <h2 class="categoria-title" style="margin-top: 0;">Pratos Novos</h2>
     <div class="carousel-container" id="carousel-novos">
         <div class="carousel-track" id="track-novos"></div>
@@ -344,6 +252,7 @@ nav a:hover {
     </div>
 </section>
 
+<!-- MENU COMPLETO -->
 <main class="menu-section" id="menu-container"></main>
 
 <section id="reserva" class="reserva-section">
@@ -366,64 +275,121 @@ nav a:hover {
 <script src="dados.js"></script>
 
 <script>
-    // Objeto para controlar a posição de cada carrossel separadamente
-const carouselStates = {
-    rec: { current: 0, data: recomendados, folder: 'destaques' },
-    novos: { current: 0, data: pratosNovos, folder: 'novos' }
-};
+    const menuContainer = document.getElementById('menu-container');
+    const navList = document.getElementById('nav-list');
 
-function initCarousels() {
-    for (const [id, state] of Object.entries(carouselStates)) {
+    /* =========================================
+       MOTOR DO CARROSSEL (DESTAQUES E NOVOS)
+       ========================================= */
+    const carouselStates = {
+        rec: { current: 0, data: recomendados, folder: 'destaques' },
+        novos: { current: 0, data: pratosNovos, folder: 'novos' }
+    };
+
+    function initCarousels() {
+        for (const [id, state] of Object.entries(carouselStates)) {
+            const track = document.getElementById(`track-${id}`);
+            const dotsCont = document.getElementById(`dots-${id}`);
+            
+            state.data.forEach((item, i) => {
+                const [nome, desc, preco] = item.split('|').map(s => s.trim());
+                // IMPORTANTE: Aqui ele vai procurar a imagem "destaque-1.webp" ou "novos-1.webp"
+                const fotoUrl = `img/${state.folder}/${state.folder}-${i+1}.webp`;
+
+                track.innerHTML += `
+                    <div class="carousel-slide">
+                        <div class="slide-img-box">
+                            <!-- Se não achar a foto, exibe a imagem padrão 'no-photo' -->
+                            <img src="${fotoUrl}" onerror="this.src='https://via.placeholder.com/600x400?text=Foto+en+camino...'">
+                        </div>
+                        <div class="slide-info-box">
+                            <span class="badge-promo">${id === 'rec' ? '⭐ Favorito' : '🔥 ¡NUEVO!'}</span>
+                            <h2>${nome}</h2>
+                            <p>${desc}</p>
+                            <div class="price-promo">${preco}</div>
+                        </div>
+                    </div>`;
+                dotsCont.innerHTML += `<div class="dot ${i===0?'active':''}" onclick="jumpTo('${id}', ${i})"></div>`;
+            });
+        }
+    }
+
+    function moveSlide(id, dir) {
+        const state = carouselStates[id];
+        const total = state.data.length;
+        state.current = (state.current + dir + total) % total;
+        updateCarouselUI(id);
+    }
+
+    function jumpTo(id, i) {
+        carouselStates[id].current = i;
+        updateCarouselUI(id);
+    }
+
+    function updateCarouselUI(id) {
         const track = document.getElementById(`track-${id}`);
-        const dotsCont = document.getElementById(`dots-${id}`);
-        
-        state.data.forEach((item, i) => {
-            const [nome, desc, preco] = item.split('|').map(s => s.trim());
-            // Busca a imagem na pasta correspondente: img/destaques/ ou img/novos/
-            const fotoUrl = `img/${state.folder}/${state.folder}-${i+1}.webp`;
+        track.style.transform = `translateX(-${carouselStates[id].current * 100}%)`;
+        const dots = document.querySelectorAll(`#dots-${id} .dot`);
+        dots.forEach((d, i) => d.classList.toggle('active', i === carouselStates[id].current));
+    }
 
-            track.innerHTML += `
-                <div class="carousel-slide">
-                    <div class="slide-img-box">
-                        <img src="${fotoUrl}" onerror="this.src='https://via.placeholder.com/600x400?text=Taramundi'">
+    initCarousels();
+    setInterval(() => moveSlide('rec', 1), 7000);
+    setInterval(() => moveSlide('novos', 1), 5000);
+
+
+    /* =========================================
+       MOTOR DO CARDÁPIO PRINCIPAL
+       ========================================= */
+    categorias.forEach(cat => {
+        navList.innerHTML += `<li><a href="#${cat.id}">${cat.nome}</a></li>`;
+        
+        let section = document.createElement('section');
+        section.id = cat.id;
+        
+        let html = `<h2 class="categoria-title">${cat.nome}</h2><div class="product-grid">`;
+
+        cat.itens.forEach((itemString, index) => {
+            const partes = itemString.split('|').map(p => p.trim());
+            const nome = partes[0];
+            const descricao = partes[1];
+            const preco = partes[2]; 
+            
+            let numeroFoto = index + 1; 
+            let nomeFoto = `${cat.id}-${numeroFoto}.webp`; 
+            let caminhoFoto = `img/${cat.id}/${nomeFoto}`; 
+
+            html += `
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="${caminhoFoto}" alt="${nome}" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'no-photo\'>Foto en camino...</div>'"
+                             style="width:100%; height:100%; object-fit:cover;">
                     </div>
-                    <div class="slide-info-box">
-                        <span class="badge-promo">${id === 'rec' ? '⭐ Favorito' : '🔥 ¡NUEVO!'}</span>
-                        <h2>${nome}</h2>
-                        <p>${desc}</p>
-                        <div class="price-promo">${preco}</div>
+                    <div class="product-info">
+                        <h3>${nome}</h3>
+                        <p>${descricao || 'Preparado con ingredientes frescos.'}</p>
+                        <span class="product-price">${preco || 'Consultar'}</span>
                     </div>
                 </div>`;
-            dotsCont.innerHTML += `<div class="dot ${i===0?'active':''}" onclick="jumpTo('${id}', ${i})"></div>`;
         });
-    }
-}
 
-function moveSlide(id, dir) {
-    const state = carouselStates[id];
-    const total = state.data.length;
-    state.current = (state.current + dir + total) % total;
-    updateCarouselUI(id);
-}
+        html += `</div>`;
+        section.innerHTML = html;
+        menuContainer.appendChild(section);
+    });
 
-function jumpTo(id, i) {
-    carouselStates[id].current = i;
-    updateCarouselUI(id);
-}
+    /* =========================================
+       WHATSAPP & FLATPICKR (RESERVAS)
+       ========================================= */
+    document.getElementById('form-reserva').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const msg = `Hola, ¿la reserva para el día ${document.getElementById('data').value} a las ${document.getElementById('hora').value} está disponible?`;
+        window.open(`https://wa.me/34643496470?text=${encodeURIComponent(msg)}`, '_blank');
+    });
 
-function updateCarouselUI(id) {
-    const track = document.getElementById(`track-${id}`);
-    track.style.transform = `translateX(-${carouselStates[id].current * 100}%)`;
-    const dots = document.querySelectorAll(`#dots-${id} .dot`);
-    dots.forEach((d, i) => d.classList.toggle('active', i === carouselStates[id].current));
-}
-
-// Inicializa tudo ao carregar
-initCarousels();
-
-// Auto-play independente
-setInterval(() => moveSlide('rec', 1), 7000);
-setInterval(() => moveSlide('novos', 1), 5000);
+    flatpickr("#data", { dateFormat: "d/m/Y", minDate: "today" });
+    flatpickr("#hora", { enableTime: true, noCalendar: true, dateFormat: "H:i", time_24hr: true });
 </script>
 </body>
 </html>
