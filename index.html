@@ -6,6 +6,8 @@
     <title>Taramundi - Bar & Restaurante</title>
     
     <!-- Fontes -->
+     <!-- Biblioteca de Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <!-- Flatpickr CSS (Tema Dark) -->
@@ -68,7 +70,56 @@
             overflow: hidden;
             margin: 0 20px;
         }
-        
+        /* --- ESTILOS DO RODAPÉ --- */
+footer {
+    padding: 60px 20px 40px;
+    text-align: center;
+    border-top: 1px solid #27272a;
+    background-color: #09090b;
+    color: var(--texto-secundario);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    color: var(--texto);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-item i {
+    color: var(--verde); /* Ícones em Verde */
+    font-size: 1.2rem;
+}
+
+.instagram-link:hover {
+    color: var(--amarelo);
+    transform: translateY(-2px);
+}
+
+.footer-divider {
+    width: 100%;
+    max-width: 300px;
+    height: 1px;
+    background: #27272a;
+    margin: 10px 0;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #52525b;
+}
         /* Custom Scrollbar Minimalista */
         nav { width: 100%; overflow-x: auto; white-space: nowrap; text-align: center; scrollbar-width: thin; scrollbar-color: #27272a transparent; }
         nav::-webkit-scrollbar { height: 4px; }
@@ -268,7 +319,25 @@
     </div>
 </section>
 
-<footer><p>&copy; 2026 Taramundi Bar & Restaurante.</p></footer>
+<footer>
+    <div class="footer-container">
+        <!-- Localização -->
+        <div class="footer-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>C. Embajadores, 14, 47013 Valladolid</span>
+        </div>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/taramundi16" target="_blank" class="footer-item instagram-link">
+            <i class="fab fa-instagram"></i>
+            <span>@taramundi16</span>
+        </a>
+
+        <div class="footer-divider"></div>
+
+        <p class="copyright">&copy; 2026 Taramundi Bar & Restaurante.</p>
+    </div>
+</footer>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
