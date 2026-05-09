@@ -2,7 +2,7 @@ const categorias = [
     { 
         id: 'desayunos', 
         nome: 'Desayunos', 
-        itens: ['Tostada con aceite', 'Tostada con marmelada', 'tostada con marmelada + jamón serrano', 'Tostada con tomate', 'Tortilla de patata', 'Tortilla francesa', 'Sandwich bacon', 'Sandwich vegetal', 'Americano', 'Bizcocho casero', 'Croissant', 'Croissant jamón y queso'] 
+        itens: ['Tostada con aceite', 'Tostada con marmelada', 'tostada con marmelada jamón serrano', 'Tostada con tomate', 'Tortilla de patata', 'Tortilla francesa', 'Sandwich bacon', 'Sandwich vegetal', 'Americano', 'Bizcocho casero', 'Croissant', 'Croissant jamón y queso'] 
     },
     { 
         id: 'tablas', 
